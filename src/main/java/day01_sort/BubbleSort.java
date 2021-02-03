@@ -6,25 +6,22 @@ package day01_sort;
  */
 
 
+import java.util.Arrays;
+
+import static java.lang.Math.*;
+
 /**
- *  1.
+ *  1. 冒泡排序
+ *  左右两两比较
  *
+ *  复杂度 O(N)
  *
  */
 public class BubbleSort {
 
 
-    public static void main(String[] args) {
-        int arr[] = /*{5, 3, 2, 4, 1, 6};{5, 4, 3, 2, 1}*/ { 181, 169, 187, 172, 163};
-        selectionSort(arr);
-        for (int i : arr) {
-            System.out.println(i);
-        }
-
-    }
-
-    // 选择排序
-    private static void selectionSort(int[] arr) {
+    // 冒泡排序
+    private static void bubbleSort(int[] arr) {
         if (arr == null || arr.length == 0) {
             return;
         }
@@ -47,5 +44,24 @@ public class BubbleSort {
         arr[j] = temp;
     }
 
+
+    public static void main(String[] args) {
+        int maxSize = 5000;
+        int maxValue = 9999;
+        int[] arr = generateRandomArray(maxSize, maxValue);
+        bubbleSort(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    /************************************** for test ********************************************/
+
+    // 生成随机数组
+    private static int[] generateRandomArray(int maxSize, int maxValue) {
+        int[] arr = new int[(int) (random() * (maxSize + 1))];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = (int) ((maxSize + 1) * random()) - (int) (maxSize * random());
+        }
+        return arr;
+    }
 
 }
